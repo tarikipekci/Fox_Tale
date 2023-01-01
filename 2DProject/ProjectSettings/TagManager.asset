@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Trap
+  - Bullet
+  - Platform
+  - Grid
+  - Edge
+  - Enemy
+  - Frog
+  - Eagle
+  - Gem
+  - Health
+  - StompBox
+  - Boss
+  - LightTrigger
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Bush
+  - Water
+  - UI
+  - Ground
+  - Player
+  - Spike
+  - Platform
+  - Bouncer
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 3820502157
+    locked: 0
+  - name: World
+    uniqueID: 2471544357
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Pickups
+    uniqueID: 1012863029
+    locked: 0
+  - name: Enemies
+    uniqueID: 2901982639
+    locked: 0
+  - name: Effects
+    uniqueID: 102632527
+    locked: 0
+  - name: Player
+    uniqueID: 3417025033
+    locked: 0
