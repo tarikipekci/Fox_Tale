@@ -144,7 +144,7 @@ MonoBehaviour:
   moveTime: 3.2
   waitTime: 1.5
   hitPoints: 0
-  maxHitPoints: 0
+  maxHitPoints: 3
   counter: 0
   chanceToDrop: 41
   leftPoint: {fileID: 704059525}
@@ -928,7 +928,7 @@ MonoBehaviour:
   moveTime: 3.2
   waitTime: 1.5
   hitPoints: 0
-  maxHitPoints: 0
+  maxHitPoints: 3
   counter: 0
   chanceToDrop: 0
   leftPoint: {fileID: 419449584}
@@ -108703,7 +108703,7 @@ MonoBehaviour:
   moveTime: 3.2
   waitTime: 1.5
   hitPoints: 0
-  maxHitPoints: 0
+  maxHitPoints: 3
   counter: 0
   chanceToDrop: 0
   leftPoint: {fileID: 36294193}
@@ -110725,7 +110725,7 @@ MonoBehaviour:
   moveTime: 3.2
   waitTime: 1.5
   hitPoints: 0
-  maxHitPoints: 0
+  maxHitPoints: 3
   counter: 0
   chanceToDrop: 0
   leftPoint: {fileID: 6190501725637013400}

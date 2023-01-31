@@ -2251,7 +2251,7 @@ MonoBehaviour:
   moveTime: 2.4
   waitTime: 1.2
   hitPoints: 0
-  maxHitPoints: 10
+  maxHitPoints: 7
   counter: 0
   chanceToDrop: 0
   leftPoint: {fileID: 1804065832}
