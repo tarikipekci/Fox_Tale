@@ -7,7 +7,6 @@ public class LevelExit : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             LevelManager.instance.EndLevel();
-            DataPersistenceManager.instance.SaveGame();
         }
     }
 }

@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class WaterAnimation : MonoBehaviour
 {
-
-    public int counter;
+    private int counter;
     public GameObject[] water;
     public Animator anim;
 
@@ -22,15 +21,15 @@ public class WaterAnimation : MonoBehaviour
 
     IEnumerator CounterForAnimation()
     {
-        water[counter].GetComponent<Animator>().SetBool($"Turn",true);
-        yield return new WaitForSeconds(0.95f);
+        water[counter].GetComponent<Animator>().SetBool($"Turn", true);
+        yield return new WaitForSeconds(2f);
+        water[counter].GetComponent<Animator>().SetBool($"Turn", false);
         counter++;
-        water[counter - 1].GetComponent<Animator>().SetBool($"Turn",false);
 
         if (counter == water.Length)
         {
             counter = 0;
         }
-        yield return new WaitForSeconds(0.95f);
+        yield return new WaitForSeconds(2f);
     }
 }

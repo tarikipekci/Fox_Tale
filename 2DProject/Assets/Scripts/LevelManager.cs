@@ -72,6 +72,5 @@ public class LevelManager : MonoBehaviour, IDataPersistence
         UIController.instance.FadeToBlack();
         yield return new WaitForSeconds(1f / UIController.instance.fadeSpeed + .25f);
         SceneManager.LoadScene(nextLevel);
-        DataPersistenceManager.instance.SaveGame();
     }
 }
