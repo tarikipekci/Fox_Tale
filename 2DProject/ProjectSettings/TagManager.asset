@@ -17,6 +17,7 @@ TagManager:
   - StompBox
   - Boss
   - LightTrigger
+  - OceanTrap
   layers:
   - Default
   - TransparentFX

@@ -110268,6 +110268,22 @@ PrefabInstance:
       propertyPath: id
       value: 9ab91299-21ed-4034-b07c-01fb4e207f18
       objectReference: {fileID: 0}
+    - target: {fileID: 6232834792192484715, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
+      propertyPath: m_Transition
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232834792192484715, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3350a212bc3240a4a9dd25f6a4424f10, type: 3}
+    - target: {fileID: 6232834792192484715, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
+      propertyPath: m_SpriteState.m_SelectedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8e33aa6c6f939eb4c875676c3dbe94b7, type: 3}
+    - target: {fileID: 6232834792192484715, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8e33aa6c6f939eb4c875676c3dbe94b7, type: 3}
     - target: {fileID: 7072750767782182798, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
       propertyPath: m_LocalPosition.x
       value: -58.1

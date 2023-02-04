@@ -246,6 +246,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
             anim.SetBool($"isSpike", isSpike);
             anim.SetBool($"isPlatform", isPlatform);
             anim.SetBool($"isBouncer", isBouncer);
+            anim.SetBool($"underWater", isUnderWater);
         }
     }
 
@@ -271,7 +272,10 @@ public class PlayerController : MonoBehaviour, IDataPersistence
             rb.velocity = new Vector2(knockBackForce, knockBackForce);
         }
 
-        anim.SetTrigger($"hurt");
+        if (isUnderWater == false)
+        {
+            anim.SetTrigger($"hurt");
+        }
     }
 
     public void Bounce()

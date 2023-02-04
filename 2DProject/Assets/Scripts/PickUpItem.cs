@@ -3,11 +3,12 @@ using UnityEngine;
 using UnityEngine.VFX;
 using System.Collections.Generic;
 
-public class PickUpItem : MonoBehaviour, IDataPersistence
+public class PickUpItem : MonoBehaviour
 {
     [Header("Scripts")] public static PickUpItem instance;
     [Header("Variables")] public bool isGem, isHealth;
     private bool isCollected;
+    public float followSpeed;
     [SerializeField] private string id;
     [Header("Game Objects")] public GameObject pickupEffect;
 
@@ -32,16 +33,17 @@ public class PickUpItem : MonoBehaviour, IDataPersistence
         {
             isHealth = true;
         }
-    }
 
-    public void LoadData(GameData data)
-    {
-        
-    }
+        if (PlayerController.instance.isUnderWater)
+        {
+            var distance = Vector2.Distance(PlayerController.instance.transform.position, transform.position);
 
-    public void SaveData(ref GameData data)
-    {
-       
+            if (Mathf.Abs(distance) < 10f)
+            {
+                transform.position = Vector2.MoveTowards(transform.position,
+                    PlayerController.instance.transform.position, followSpeed);
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

@@ -69,7 +69,10 @@ public class PlayerHealthController : MonoBehaviour, IDataPersistence
 
                 StartCoroutine(Visibility());
 
-                PlayerController.instance.KnockBack();
+                if (PlayerController.instance.isUnderWater == false)
+                {
+                    PlayerController.instance.KnockBack();
+                }
             }
 
             UIController.instance.UpdateHealth();
@@ -96,6 +99,7 @@ public class PlayerHealthController : MonoBehaviour, IDataPersistence
         {
             currentHealth = maxHealth;
         }
+
         UIController.instance.UpdateHealth();
     }
 }
