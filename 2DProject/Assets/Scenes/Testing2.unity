@@ -47694,6 +47694,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGem: 0
   isHealth: 0
+  followSpeed: 0
   id: 5d541b00-7eeb-4540-a6ed-f1b1481b3b57
   pickupEffect: {fileID: 81106413372517365, guid: 590bb813781332e41ad807ec7151b472, type: 3}
 --- !u!95 &230555818
@@ -50740,6 +50741,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGem: 0
   isHealth: 0
+  followSpeed: 0
   id: 4a915f51-7b0b-4ff9-b7ad-ea5ec25902b1
   pickupEffect: {fileID: 81106413372517365, guid: 590bb813781332e41ad807ec7151b472, type: 3}
 --- !u!95 &592126788
@@ -52149,6 +52151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGem: 0
   isHealth: 0
+  followSpeed: 0
   id: b62b623b-7452-4c29-8360-56bdd8db9b86
   pickupEffect: {fileID: 81106413372517365, guid: 590bb813781332e41ad807ec7151b472, type: 3}
 --- !u!95 &758180704
@@ -52923,6 +52926,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGem: 0
   isHealth: 0
+  followSpeed: 0
   id: 5a2f93c3-1764-4590-bb0b-b4013c9f038e
   pickupEffect: {fileID: 81106413372517365, guid: 590bb813781332e41ad807ec7151b472, type: 3}
 --- !u!95 &869985146
@@ -107733,6 +107737,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGem: 0
   isHealth: 0
+  followSpeed: 0
   id: a0a05d47-52b2-4338-841a-9278f1152325
   pickupEffect: {fileID: 81106413372517365, guid: 590bb813781332e41ad807ec7151b472, type: 3}
 --- !u!95 &1756375732

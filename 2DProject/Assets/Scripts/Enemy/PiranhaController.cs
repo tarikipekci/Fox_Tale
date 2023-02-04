@@ -6,7 +6,7 @@ public class PiranhaController : MonoBehaviour
     private Rigidbody2D _rigidbody;
 
     [Header("Objects")] public GameObject gem;
-    
+
     [Header("Movement Variables")] public float swimmingSpeed;
 
     private void Start()
@@ -21,9 +21,12 @@ public class PiranhaController : MonoBehaviour
         _rigidbody.rotation = angle;
         var distance = Vector2.Distance(player.position, transform.position);
 
-        if (distance < 30f)
+        if (Time.timeScale == 1)
         {
-            transform.position = Vector2.MoveTowards(transform.position, player.position, swimmingSpeed);
+            if (distance < 30f)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, player.position, swimmingSpeed);
+            }
         }
     }
 

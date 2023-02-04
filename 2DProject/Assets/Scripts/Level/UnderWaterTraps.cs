@@ -18,6 +18,11 @@ public class UnderWaterTraps : MonoBehaviour
             {
                 PlayerHealthController.instance.DealDamage(PlayerController.instance.damage);
             }
+
+            if (other.gameObject.CompareTag("Bullet"))
+            {
+                Destroy(other.gameObject);
+            }
         }
     }
 }
