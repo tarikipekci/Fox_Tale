@@ -5,7 +5,7 @@ using UnityEngine;
 public class MuzzleFlash : MonoBehaviour
 {
     [Header("Objects")] public GameObject bullet;
-    
+
     [Header("Components")] private Rigidbody2D rb;
 
     [Header("Variables")] public bool isShooting;
@@ -34,15 +34,25 @@ public class MuzzleFlash : MonoBehaviour
             }
         }
     }
-    
+
     private void Fire()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !isShooting)
+        if (PlayerController.instance.isUnderWater == false)
         {
-            StartCoroutine(Shoot());
+            if (Input.GetKeyDown(KeyCode.Mouse0) && !isShooting)
+            {
+                StartCoroutine(Shoot());
+            }
+        }
+        else
+        {
+            if (Input.GetKey(KeyCode.Mouse0) && !isShooting)
+            {
+                StartCoroutine(Shoot());
+            }
         }
     }
-    
+
     private IEnumerator Shoot()
     {
         isShooting = true;

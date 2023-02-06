@@ -23,7 +23,7 @@ public class PiranhaController : MonoBehaviour
 
         if (Time.timeScale == 1)
         {
-            if (distance < 30f)
+            if (distance < 50f)
             {
                 transform.position = Vector2.MoveTowards(transform.position, player.position, swimmingSpeed);
             }
