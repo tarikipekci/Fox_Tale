@@ -16,4 +16,9 @@ public class OpenLink : MonoBehaviour
     {
         Application.OpenURL("https://www.youtube.com/channel/UCMFL7ZBkfEbkPP51SiscuwA");
     }
+
+    public void OpenGithubProfile()
+    {
+        Application.OpenURL("https://github.com/tarikipekci");
+    }
 }

@@ -8,7 +8,7 @@ public class LevelManagerForOceanside : MonoBehaviour
     private Rigidbody2D rbCam;
 
     [Header("Objects")] public GameObject player;
-    public GameObject bgm;
+    public GameObject bgm, shootingSound;
     public GameObject informationPage;
     public GameObject screen;
     public GameObject farBG, foreBG, sandBG;
@@ -28,9 +28,8 @@ public class LevelManagerForOceanside : MonoBehaviour
 
         rbCam = screen.GetComponent<Rigidbody2D>();
         rbCam.gravityScale = 0f;
-        
-        MuzzleFlash.instance.gameObject.SetActive(false);
-       
+
+        shootingSound.SetActive(false);
     }
 
     private void Start()
@@ -48,7 +47,7 @@ public class LevelManagerForOceanside : MonoBehaviour
         if (counterForInfoPage <= 0f)
         {
             bgm.SetActive(true);
-            MuzzleFlash.instance.gameObject.SetActive(true);
+            shootingSound.SetActive(true);
             informationPage.SetActive(false);
         }
 
