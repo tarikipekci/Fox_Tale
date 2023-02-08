@@ -40,8 +40,17 @@ public class PickUpItem : MonoBehaviour
 
             if (Mathf.Abs(distance) < 10f)
             {
-                transform.position = Vector2.MoveTowards(transform.position,
-                    PlayerController.instance.transform.position, followSpeed);
+                if (gameObject.CompareTag("Health") && PlayerHealthController.instance.currentHealth < 6)
+                {
+                    transform.position = Vector2.MoveTowards(transform.position,
+                        PlayerController.instance.transform.position, followSpeed);
+                }
+
+                if (gameObject.CompareTag("Gem"))
+                {
+                    transform.position = Vector2.MoveTowards(transform.position,
+                        PlayerController.instance.transform.position, followSpeed);
+                }
             }
         }
     }

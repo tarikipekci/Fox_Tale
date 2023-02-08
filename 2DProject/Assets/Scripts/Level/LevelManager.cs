@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour, IDataPersistence
     public string nextLevel;
     private bool musicPlayed;
     public static int gemCounter;
-
+    
     private void Awake()
     {
         instance = this;
