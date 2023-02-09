@@ -10813,7 +10813,6 @@ MonoBehaviour:
   isGem: 0
   isHealth: 0
   followSpeed: 0.1
-  id: 
   pickupEffect: {fileID: 81106413372517365, guid: 590bb813781332e41ad807ec7151b472, type: 3}
 --- !u!95 &296266175
 Animator:
@@ -18397,9 +18396,9 @@ MonoBehaviour:
   shootingSound: {fileID: 1755883096}
   informationPage: {fileID: 441892541}
   screen: {fileID: 701104336}
-  farBG: {fileID: 969292166}
-  foreBG: {fileID: 760758556}
-  sandBG: {fileID: 1158724192}
+  farBg: {fileID: 969292166}
+  foreBg: {fileID: 760758556}
+  sandBg: {fileID: 1158724192}
 --- !u!4 &549724987
 Transform:
   m_ObjectHideFlags: 0
@@ -62038,6 +62037,10 @@ PrefabInstance:
       propertyPath: bulletVelocity
       value: 1500
       objectReference: {fileID: 0}
+    - target: {fileID: 675702372446032312, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 24be8b5be3042e647b64e39ed9b09314, type: 2}
     - target: {fileID: 2940586231900337251, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
       propertyPath: m_Name
       value: LevelPack
@@ -62098,6 +62101,10 @@ PrefabInstance:
       propertyPath: bgm
       value: 
       objectReference: {fileID: 2021653725}
+    - target: {fileID: 2940586232102137327, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 24be8b5be3042e647b64e39ed9b09314, type: 2}
     - target: {fileID: 2940586232111322714, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -62230,6 +62237,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7627432911325569219, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 24be8b5be3042e647b64e39ed9b09314, type: 2}
     - target: {fileID: 7627432911325569219, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
       propertyPath: nextLevel
       value: Level4

@@ -404,7 +404,6 @@ MonoBehaviour:
   isGem: 0
   isHealth: 0
   followSpeed: 0
-  id: 
   pickupEffect: {fileID: 81106413372517365, guid: 590bb813781332e41ad807ec7151b472, type: 3}
 --- !u!95 &174198227
 Animator:
@@ -544,7 +543,6 @@ MonoBehaviour:
   isGem: 0
   isHealth: 0
   followSpeed: 0
-  id: 
   pickupEffect: {fileID: 81106413372517365, guid: 590bb813781332e41ad807ec7151b472, type: 3}
 --- !u!95 &186122338
 Animator:
@@ -1290,7 +1288,6 @@ MonoBehaviour:
   isGem: 0
   isHealth: 0
   followSpeed: 0
-  id: 
   pickupEffect: {fileID: 81106413372517365, guid: 590bb813781332e41ad807ec7151b472, type: 3}
 --- !u!95 &370077535
 Animator:
@@ -1603,7 +1600,6 @@ MonoBehaviour:
   isGem: 0
   isHealth: 0
   followSpeed: 0
-  id: 
   pickupEffect: {fileID: 81106413372517365, guid: 590bb813781332e41ad807ec7151b472, type: 3}
 --- !u!95 &641729402
 Animator:
@@ -9757,6 +9753,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 1488006644, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1611585298, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -9773,6 +9773,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.63
       objectReference: {fileID: 0}
+    - target: {fileID: 2089078411, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 448326157104487952, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 675702372446032312, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 24be8b5be3042e647b64e39ed9b09314, type: 2}
     - target: {fileID: 2940586231713047598, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
       propertyPath: m_LocalPosition.x
       value: -36.83
@@ -9849,6 +9861,10 @@ PrefabInstance:
       propertyPath: bgm
       value: 
       objectReference: {fileID: 901299563}
+    - target: {fileID: 2940586232102137327, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 24be8b5be3042e647b64e39ed9b09314, type: 2}
     - target: {fileID: 2940586232504979226, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -9974,12 +9990,16 @@ PrefabInstance:
       value: LevelSelect
       objectReference: {fileID: 0}
     - target: {fileID: 7627432911325569219, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 24be8b5be3042e647b64e39ed9b09314, type: 2}
+    - target: {fileID: 7627432911325569219, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
       propertyPath: nextLevel
       value: Testing2
       objectReference: {fileID: 0}
     - target: {fileID: 7627432911325569219, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
       propertyPath: levelToLoad
-      value: Beginning
+      value: Tutorial
       objectReference: {fileID: 0}
     - target: {fileID: 7979579279494246626, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
       propertyPath: m_Color.b

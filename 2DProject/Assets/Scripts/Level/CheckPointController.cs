@@ -1,35 +1,40 @@
+using Player;
 using UnityEngine;
 
-public class CheckPointController : MonoBehaviour
+namespace Level
 {
-    [Header("Scripts")]
-    public static CheckPointController instance;
-    private CheckPoint[] checkPoints;
+    public class CheckPointController : MonoBehaviour
+    {
+        [Header("Scripts")]
+        // ReSharper disable once InconsistentNaming
+        public static CheckPointController instance;
+        private CheckPoint[] _checkPoints;
     
-    [Header("Vectors")]
-    public Vector3 spawnPoint;
+        [Header("Vectors")]
+        public Vector3 spawnPoint;
 
-    private void Awake()
-    {
-        instance = this;
-    }
-    
-    void Start()
-    {
-        checkPoints = FindObjectsOfType<CheckPoint>();
-        spawnPoint = PlayerController.instance.transform.position;
-    }
-    
-    public void DeactivateCheckPoints()
-    {
-        foreach (var t in checkPoints)
+        private void Awake()
         {
-            t.ResetCheckPoint();
+            instance = this;
         }
-    }
 
-    public void SetSpawnPoint(Vector3 newSpawnPoint)
-    {
-        spawnPoint = newSpawnPoint;
+        private void Start()
+        {
+            _checkPoints = FindObjectsOfType<CheckPoint>();
+            spawnPoint = PlayerController.instance.transform.position;
+        }
+    
+        public void DeactivateCheckPoints()
+        {
+            foreach (var t in _checkPoints)
+            {
+                t.ResetCheckPoint();
+            }
+        }
+
+        public void SetSpawnPoint(Vector3 newSpawnPoint)
+        {
+            spawnPoint = newSpawnPoint;
+        }
     }
 }

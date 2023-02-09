@@ -1,13 +1,15 @@
-using System;
 using UnityEngine;
 
-public class LevelExit : MonoBehaviour
+namespace Level
 {
-    private void OnTriggerEnter2D(Collider2D other)
+    public class LevelExit : MonoBehaviour
     {
-        if(other.gameObject.CompareTag("Player"))
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            LevelManager.instance.EndLevel();
+            if(other.gameObject.CompareTag("Player"))
+            {
+                LevelManager._instance.EndLevel();
+            }
         }
     }
 }

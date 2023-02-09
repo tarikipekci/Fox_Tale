@@ -1,44 +1,47 @@
 using UnityEngine;
 
-public class FlyingPlatformController : MonoBehaviour
+namespace Level
 {
-    public Transform[] wayPoints;
-    public float moveSpeed;
-    public int target;
-
-    private void Update()
+    public class FlyingPlatformController : MonoBehaviour
     {
-        transform.position = Vector2.MoveTowards(transform.position, wayPoints[target].position, moveSpeed * Time.deltaTime);
-    }
+        public Transform[] wayPoints;
+        public float moveSpeed;
+        public int target;
+
+        private void Update()
+        {
+            transform.position = Vector2.MoveTowards(transform.position, wayPoints[target].position, moveSpeed * Time.deltaTime);
+        }
     
-    private void FixedUpdate()
-    {
-        if (transform.position == wayPoints[target].position)
+        private void FixedUpdate()
         {
-            if (target == wayPoints.Length - 1)
+            if (transform.position == wayPoints[target].position)
             {
-                target = 0;
-            }
-            else
-            {
-                target++;
+                if (target == wayPoints.Length - 1)
+                {
+                    target = 0;
+                }
+                else
+                {
+                    target++;
+                }
             }
         }
-    }
 
-    private void OnCollisionEnter2D(Collision2D col)
-    {
-        if(col.gameObject.CompareTag("Player"))
+        private void OnCollisionEnter2D(Collision2D col)
         {
-            col.collider.transform.SetParent(transform);
+            if(col.gameObject.CompareTag("Player"))
+            {
+                col.collider.transform.SetParent(transform);
+            }
         }
-    }
 
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        if(other.gameObject.CompareTag("Player"))
+        private void OnCollisionExit2D(Collision2D other)
         {
-            other.collider.transform.SetParent(null);
+            if(other.gameObject.CompareTag("Player"))
+            {
+                other.collider.transform.SetParent(null);
+            }
         }
     }
 }

@@ -1,83 +1,78 @@
-using System;
+using Player;
 using UnityEngine;
-using UnityEngine.VFX;
-using System.Collections.Generic;
 
-public class PickUpItem : MonoBehaviour
+namespace Level
 {
-    [Header("Scripts")] public static PickUpItem instance;
-    [Header("Variables")] public bool isGem, isHealth;
-    private bool isCollected;
-    public float followSpeed;
-    [SerializeField] private string id;
-    [Header("Game Objects")] public GameObject pickupEffect;
-
-    [ContextMenu("Generate guid for id")]
-    private void GenerateGuid()
+    public class PickUpItem : MonoBehaviour
     {
-        id = System.Guid.NewGuid().ToString();
-    }
-
-    private void Awake()
-    {
-        instance = this;
-    }
-
-    private void Update()
-    {
-        if (gameObject.CompareTag("Gem"))
+        // ReSharper disable once InconsistentNaming
+        [Header("Scripts")] public static PickUpItem instance;
+        [Header("Variables")] public bool isGem, isHealth;
+        private bool _isCollected;
+        public float followSpeed;
+        [Header("Game Objects")] public GameObject pickupEffect;
+    
+        private void Awake()
         {
-            isGem = true;
-        }
-        else if (gameObject.CompareTag("Health"))
-        {
-            isHealth = true;
+            instance = this;
         }
 
-        if (PlayerController.instance.isUnderWater)
+        private void Update()
         {
-            var distance = Vector2.Distance(PlayerController.instance.transform.position, transform.position);
-
-            if (Mathf.Abs(distance) < 10f)
+            if (gameObject.CompareTag("Gem"))
             {
-                if (gameObject.CompareTag("Health") && PlayerHealthController.instance.currentHealth < 6)
-                {
-                    transform.position = Vector2.MoveTowards(transform.position,
-                        PlayerController.instance.transform.position, followSpeed);
-                }
+                isGem = true;
+            }
+            else if (gameObject.CompareTag("Health"))
+            {
+                isHealth = true;
+            }
 
-                if (gameObject.CompareTag("Gem"))
+            if (PlayerController.instance.isUnderWater)
+            {
+                var distance = Vector2.Distance(PlayerController.instance.transform.position, transform.position);
+
+                if (Mathf.Abs(distance) < 10f)
                 {
-                    transform.position = Vector2.MoveTowards(transform.position,
-                        PlayerController.instance.transform.position, followSpeed);
+                    if (gameObject.CompareTag("Health") && PlayerHealthController.instance.currentHealth < 6)
+                    {
+                        transform.position = Vector2.MoveTowards(transform.position,
+                            PlayerController.instance.transform.position, followSpeed);
+                    }
+
+                    if (gameObject.CompareTag("Gem"))
+                    {
+                        transform.position = Vector2.MoveTowards(transform.position,
+                            PlayerController.instance.transform.position, followSpeed);
+                    }
                 }
             }
         }
-    }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Player") && !isCollected)
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            if (isGem)
+            if (other.gameObject.CompareTag("Player") && !_isCollected)
             {
-                LevelManager.gemsCollected++;
-                this.isCollected = true;
-                this.gameObject.SetActive(false);
-                var transform1 = transform;
-                Instantiate(pickupEffect, transform1.position, transform1.rotation);
-                UIController.instance.UpdateGemCount();
-                AudioManager.instance.PlaySfx(6);
-            }
-            else if (isHealth)
-            {
-                if (PlayerHealthController.instance.currentHealth == PlayerHealthController.instance.maxHealth) return;
-                PlayerHealthController.instance.HealPlayer(1);
-                this.isCollected = true;
-                this.gameObject.SetActive(false);
-                var transform1 = transform;
-                Instantiate(pickupEffect, transform1.position, transform1.rotation);
-                AudioManager.instance.PlaySfx(7);
+                if (isGem)
+                {
+                    LevelManager.GemsCollected++;
+                    this._isCollected = true;
+                    this.gameObject.SetActive(false);
+                    var transform1 = transform;
+                    Instantiate(pickupEffect, transform1.position, transform1.rotation);
+                    UIController.instance.UpdateGemCount();
+                    AudioManager.instance.PlaySfx(6);
+                }
+                else if (isHealth)
+                {
+                    if (PlayerHealthController.instance.currentHealth == PlayerHealthController.instance.maxHealth) return;
+                    PlayerHealthController.instance.HealPlayer(1);
+                    this._isCollected = true;
+                    this.gameObject.SetActive(false);
+                    var transform1 = transform;
+                    Instantiate(pickupEffect, transform1.position, transform1.rotation);
+                    AudioManager.instance.PlaySfx(7);
+                }
             }
         }
     }

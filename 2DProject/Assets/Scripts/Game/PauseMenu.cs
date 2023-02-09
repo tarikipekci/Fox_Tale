@@ -1,84 +1,91 @@
-using UnityEngine.SceneManagement;
+using Level;
+using Player;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class PauseMenu : MonoBehaviour
+namespace Game
 {
-    [Header("Variables")] public string mainMenu;
-    public bool isPaused;
-    public bool settings;
-
-    [Header("Scripts")] public static PauseMenu instance;
-
-    [Header("Game Objects")] public GameObject pauseScreen;
-    public GameObject settingsScreen;
-
-    private void Awake()
+    public class PauseMenu : MonoBehaviour
     {
-        instance = this;
-        pauseScreen.SetActive(false);
-    }
+        [Header("Variables")] public string mainMenu;
+        public bool isPaused;
+        public bool settings;
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        // ReSharper disable once InconsistentNaming
+        [Header("Scripts")] public static PauseMenu instance;
+
+        [Header("Game Objects")] public GameObject pauseScreen;
+        public GameObject settingsScreen;
+        
+        private void Awake()
         {
-            PauseOrUnpause();
+            instance = this;
+            pauseScreen.SetActive(false);
         }
 
-        if (settings)
+        void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 PauseOrUnpause();
-                settings = false;
-                settingsScreen.SetActive(false);
+            }
+
+            if (settings)
+            {
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    PauseOrUnpause();
+                    settings = false;
+                    settingsScreen.SetActive(false);
+                }
             }
         }
-    }
 
-    public void PauseOrUnpause()
-    {
-        if (isPaused)
+        public void PauseOrUnpause()
         {
-            isPaused = false;
-            pauseScreen.SetActive(false);
+            if (isPaused)
+            {
+                isPaused = false;
+                pauseScreen.SetActive(false);
+                Time.timeScale = 1f;
+            }
+            else
+            {
+                if (PlayerHealthController.instance.currentHealth <= 0) return;
+                isPaused = true;
+                pauseScreen.SetActive(true);
+                Time.timeScale = 0f;
+            }
+        }
+
+        public void LevelSelect()
+        {
+            LevelManager.GemsCollected = LevelManager.GemCounter;
+            SceneManager.LoadScene(LevelManager._instance.levelToLoad);
+            UIController.instance.UpdateGemCount();
             Time.timeScale = 1f;
         }
-        else
+
+        public void Settings()
         {
-            if (PlayerHealthController.instance.currentHealth <= 0) return;
-            isPaused = true;
-            pauseScreen.SetActive(true);
-            Time.timeScale = 0f;
+            settings = true;
+            pauseScreen.gameObject.SetActive(false);
+            settingsScreen.gameObject.SetActive(true);
         }
-    }
-    public void LevelSelect()
-    {
-        LevelManager.gemsCollected = LevelManager.gemCounter;
-        SceneManager.LoadScene(LevelManager.instance.levelToLoad);
-        UIController.instance.UpdateGemCount();
-        Time.timeScale = 1f;
-    }
-    
-    public void Settings()
-    {
-        settings = true;
-        pauseScreen.gameObject.SetActive(false);
-        settingsScreen.gameObject.SetActive(true);
-    }
 
-    public void MainMenu()
-    {
-        //DataPersistenceManager.instance.SaveGame();
-        SceneManager.LoadScene(mainMenu);
-        Time.timeScale = 1f;
-    }
+        public void MainMenu()
+        {
+            //DataPersistenceManager.instance.SaveGame();
+            SceneManager.LoadScene(mainMenu);
+            Time.timeScale = 1f;
+        }
 
-    public void LoadFirstLevel()
-    {
-        Time.timeScale = 1f;
-        LevelManager.gemsCollected = 0;
-        UIController.instance.UpdateGemCount();
-        SceneManager.LoadScene("Testing2");
+        public void LoadFirstLevel()
+        {
+            Time.timeScale = 1f;
+            LevelManager.GemsCollected = 0;
+            UIController.instance.UpdateGemCount();
+            SceneManager.LoadScene("Level1");
+        }
     }
 }

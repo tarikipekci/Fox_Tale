@@ -1,83 +1,86 @@
-using System;
 using System.Collections;
+using Game;
+using Level;
 using UnityEngine;
 
-public class MuzzleFlash : MonoBehaviour
+namespace Player
 {
-    [Header("Objects")] public GameObject bullet;
-
-    [Header("Components")] private Rigidbody2D rb;
-
-    [Header("Variables")] public bool isShooting;
-    [SerializeField] public float bulletVelocity;
-    [SerializeField] private float shootTimer;
-
-    [Header("Scripts")] public static MuzzleFlash instance;
-
-    private void Awake()
+    public class MuzzleFlash : MonoBehaviour
     {
-        instance = this;
-    }
+        [Header("Objects")] public GameObject bullet;
 
-    private void Start()
-    {
-        isShooting = false;
-    }
+        [Header("Components")] private Rigidbody2D _rb;
 
-    private void Update()
-    {
-        if (!PauseMenu.instance.isPaused)
+        [Header("Variables")] public bool isShooting;
+        [SerializeField] public float bulletVelocity;
+        [SerializeField] private float shootTimer;
+
+        // ReSharper disable once InconsistentNaming
+        [Header("Scripts")] public static MuzzleFlash instance;
+
+        private void Awake()
         {
+            instance = this;
+        }
+
+        private void Start()
+        {
+            isShooting = false;
+        }
+
+        private void Update()
+        {
+            if (PauseMenu.instance.isPaused) return;
             if (PlayerController.instance.knockBackCounter <= 0)
             {
                 Fire();
             }
         }
-    }
 
-    private void Fire()
-    {
-        if (PlayerController.instance.isUnderWater == false)
+        private void Fire()
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0) && !isShooting)
+            if (PlayerController.instance.isUnderWater == false)
             {
-                StartCoroutine(Shoot());
+                if (Input.GetKeyDown(KeyCode.Mouse0) && !isShooting)
+                {
+                    StartCoroutine(Shoot());
+                }
+            }
+            else
+            {
+                if (Input.GetKey(KeyCode.Mouse0) && !isShooting)
+                {
+                    StartCoroutine(Shoot());
+                }
             }
         }
-        else
+
+        private IEnumerator Shoot()
         {
-            if (Input.GetKey(KeyCode.Mouse0) && !isShooting)
+            isShooting = true;
+            AudioManager.instance.PlaySfx(2);
+            var newBullet =
+                Instantiate(bullet, gameObject.transform.position,
+                    transform.rotation); // Creating clons of the original bullet object to destroy.
+
+            newBullet.GetComponent<Rigidbody2D>().velocity = PlayerController.instance.spriteRenderer.flipX switch
             {
-                StartCoroutine(Shoot());
-            }
+                false => new Vector2(bulletVelocity * Time.fixedDeltaTime, 0f),
+                true => -new Vector2(bulletVelocity * Time.fixedDeltaTime, 0f)
+            };
+
+            yield return new WaitForSeconds(shootTimer);
+            isShooting = false;
+            yield return new WaitForSeconds(1f);
+            Destroy(newBullet); // Destroying the clon of the bullet object
         }
-    }
 
-    private IEnumerator Shoot()
-    {
-        isShooting = true;
-        AudioManager.instance.PlaySfx(2);
-        var newBullet =
-            Instantiate(bullet, gameObject.transform.position,
-                transform.rotation); // Creating clons of the original bullet object to destroy.
-
-        newBullet.GetComponent<Rigidbody2D>().velocity = PlayerController.instance.spriteRenderer.flipX switch
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            false => new Vector2(bulletVelocity * Time.fixedDeltaTime, 0f),
-            true => -new Vector2(bulletVelocity * Time.fixedDeltaTime, 0f)
-        };
-
-        yield return new WaitForSeconds(shootTimer);
-        isShooting = false;
-        yield return new WaitForSeconds(1f);
-        Destroy(newBullet); // Destroying the clon of the bullet object
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Trap"))
-        {
-            bullet.GetComponent<SpriteRenderer>().enabled = false;
+            if (collision.gameObject.CompareTag("Trap"))
+            {
+                bullet.GetComponent<SpriteRenderer>().enabled = false;
+            }
         }
     }
 }

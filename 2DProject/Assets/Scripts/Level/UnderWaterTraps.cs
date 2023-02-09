@@ -1,27 +1,28 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Player;
 using UnityEngine;
 
-public class UnderWaterTraps : MonoBehaviour
+namespace Level
 {
-    [Header("Objects")] public GameObject deathEffect;
-    public GameObject bullet;
-    private void OnTriggerEnter2D(Collider2D other)
+    public class UnderWaterTraps : MonoBehaviour
     {
-        Destroy(gameObject);
-        Instantiate(deathEffect, gameObject.transform.position, gameObject.transform.rotation);
-
-        if (gameObject.CompareTag("OceanTrap"))
+        [Header("Objects")] public GameObject deathEffect;
+        public GameObject bullet;
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.CompareTag("Player"))
-            {
-                PlayerHealthController.instance.DealDamage(PlayerController.instance.damage);
-            }
+            Destroy(gameObject);
+            Instantiate(deathEffect, gameObject.transform.position, gameObject.transform.rotation);
 
-            if (other.gameObject.CompareTag("Bullet"))
+            if (gameObject.CompareTag("OceanTrap"))
             {
-                Destroy(other.gameObject);
+                if (other.gameObject.CompareTag("Player"))
+                {
+                    PlayerHealthController.instance.DealDamage(PlayerController.instance.damage);
+                }
+
+                if (other.gameObject.CompareTag("Bullet"))
+                {
+                    Destroy(other.gameObject);
+                }
             }
         }
     }

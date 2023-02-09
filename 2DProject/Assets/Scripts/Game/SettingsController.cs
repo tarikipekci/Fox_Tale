@@ -1,96 +1,116 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Level;
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class SettingsController : MonoBehaviour
+namespace Game
 {
-    public Text resolutionLevel;
-    public Text soundLevel;
-    public Text ambientLevel;
-    public Text musicLevel;
-    public AudioManager audioManager;
-    static int defaultIndex = 5;
-    static int index;
-    static float sound;
-
-    public int[] width = { 800, 1024, 1280, 1360, 1366, 1920 };
-    public int[] height = { 600, 768, 720, 768, 768, 1080 };
-    public static SettingsController instance;
-
-    private void Awake()
+    public class SettingsController : MonoBehaviour
     {
-        instance = this;
-        sound = audioManager.bgm.volume;
-        index = (int)sound;
-    }
+        [Header("Components")] public Text resolutionLevel;
+        public Text soundLevel, ambientLevel, musicLevel;
+        public AudioManager audioManager;
 
-    private void Update()
-    {
-        resolutionLevel.text = width[defaultIndex].ToString() + "x" + height[defaultIndex].ToString();
-        soundLevel.text = (Mathf.Round((audioManager.bgm.volume + audioManager.soundEffects[index].volume) / 2 * 100))
-            .ToString();
-        ambientLevel.text = Mathf.Round((audioManager.soundEffects[index].volume) * 100).ToString();
-        musicLevel.text = Mathf.Round((audioManager.bgm.volume) * 100).ToString();
-    }
+        [Header("Variables")] private static int _defaultIndex = 5;
+        public SettingsData data;
+        
+        // ReSharper disable once InconsistentNaming
+        [Header("Script")] public static SettingsController instance;
 
-    public void IncreaseResolution()
-    {
-        Screen.SetResolution(width[defaultIndex + 1], height[defaultIndex + 1], FullScreenMode.ExclusiveFullScreen);
-        defaultIndex++;
-    }
-
-    public void DecreaseResolution()
-    {
-        Screen.SetResolution(width[defaultIndex - 1], height[defaultIndex - 1], FullScreenMode.ExclusiveFullScreen);
-        defaultIndex--;
-    }
-
-    public void IncreaseGeneralSound()
-    {
-        audioManager.bgm.volume += 0.01f;
-
-        for (int i = 0; i < audioManager.soundEffects.Length; i++)
+        private void Awake()
         {
-            audioManager.soundEffects[i].volume += 0.01f;
+            instance = this;
+            data.generalSound = (data.ambientSoundLevel + data.soundLevelForMusic) / 2f;
+
+            audioManager.bgm.volume = data.soundLevelForMusic;
+            
+            // ReSharper disable once ForCanBeConvertedToForeach
+            for (var i = 0; i < audioManager.soundEffects.Length; i++)
+            {
+                audioManager.soundEffects[i].volume = data.ambientSoundLevel;
+            }
+            
         }
-    }
 
-    public void DecreaseGeneralSound()
-    {
-        audioManager.bgm.volume -= 0.01f;
+        public int[] width = { 800, 1024, 1280, 1360, 1366, 1920 };
+        public int[] height = { 600, 768, 720, 768, 768, 1080 };
 
-        for (int i = 0; i < audioManager.soundEffects.Length; i++)
+        private void Update()
         {
-            audioManager.soundEffects[i].volume -= 0.01f;
+            data.ambientSoundLevel = audioManager.soundEffects[0].volume;
+            data.soundLevelForMusic = audioManager.bgm.volume;
+            data.generalSound = (data.ambientSoundLevel + data.soundLevelForMusic) / 2f;
+            
+            resolutionLevel.text = width[_defaultIndex] + "x" + height[_defaultIndex];
+            // ReSharper disable once SpecifyACultureInStringConversionExplicitly
+            soundLevel.text = Mathf.Round(data.generalSound * 100).ToString();
+            // ReSharper disable once SpecifyACultureInStringConversionExplicitly
+            ambientLevel.text = Mathf.Round((data.ambientSoundLevel) * 100).ToString();
+            // ReSharper disable once SpecifyACultureInStringConversionExplicitly
+            musicLevel.text = Mathf.Round((data.soundLevelForMusic) * 100).ToString();
         }
-    }
 
-    public void IncreaseAmbientSound()
-    {
-        for (int i = 0; i < audioManager.soundEffects.Length; i++)
+        public void IncreaseResolution()
         {
-            audioManager.soundEffects[i].volume += 0.01f;
+            Screen.SetResolution(width[_defaultIndex + 1], height[_defaultIndex + 1],
+                FullScreenMode.ExclusiveFullScreen);
+            _defaultIndex++;
         }
-    }
 
-    public void DecreaseAmbientSound()
-    {
-        for (int i = 0; i < audioManager.soundEffects.Length; i++)
+        public void DecreaseResolution()
         {
-            audioManager.soundEffects[i].volume -= 0.01f;
+            Screen.SetResolution(width[_defaultIndex - 1], height[_defaultIndex - 1],
+                FullScreenMode.ExclusiveFullScreen);
+            _defaultIndex--;
         }
-    }
 
-    public void IncreaseMusicSound()
-    {
-        audioManager.bgm.volume += 0.01f;
-    }
+        public void IncreaseGeneralSound()
+        {
+            audioManager.bgm.volume += 0.01f;
 
-    public void DecreaseMusicSound()
-    {
-        audioManager.bgm.volume -= 0.01f;
+            // ReSharper disable once ForCanBeConvertedToForeach
+            for (var i = 0; i < audioManager.soundEffects.Length; i++)
+            {
+                audioManager.soundEffects[i].volume += 0.01f;
+            }
+        }
+
+        public void DecreaseGeneralSound()
+        {
+            audioManager.bgm.volume -= 0.01f;
+
+            // ReSharper disable once ForCanBeConvertedToForeach
+            for (var i = 0; i < audioManager.soundEffects.Length; i++)
+            {
+                audioManager.soundEffects[i].volume -= 0.01f;
+            }
+        }
+
+        public void IncreaseAmbientSound()
+        {
+            // ReSharper disable once ForCanBeConvertedToForeach
+            for (var i = 0; i < audioManager.soundEffects.Length; i++)
+            {
+                audioManager.soundEffects[i].volume += 0.01f;
+            }
+        }
+
+        public void DecreaseAmbientSound()
+        {
+            // ReSharper disable once ForCanBeConvertedToForeach
+            for (var i = 0; i < audioManager.soundEffects.Length; i++)
+            {
+                audioManager.soundEffects[i].volume -= 0.01f;
+            }
+        }
+
+        public void IncreaseMusicSound()
+        {
+            audioManager.bgm.volume += 0.01f;
+        }
+
+        public void DecreaseMusicSound()
+        {
+            audioManager.bgm.volume -= 0.01f;
+        }
     }
 }

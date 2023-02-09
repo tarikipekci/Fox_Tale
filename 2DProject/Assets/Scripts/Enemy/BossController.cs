@@ -1,4 +1,7 @@
 using System.Collections;
+using Enemy;
+using Level;
+using Player;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -115,7 +118,7 @@ public class BossController : MonoBehaviour
 
         if (!(hitPoints <= 0)) return;
         gameObject.SetActive(false);
-        LevelManager.gemsCollected += 15;
+        LevelManager.GemsCollected += 15;
         Destroy(block);
         Destroy(block1);
         Destroy(block2);

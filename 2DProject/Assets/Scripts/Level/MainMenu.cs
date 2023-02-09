@@ -1,22 +1,24 @@
-using System;
-using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+namespace Level
 {
-    [Header("Variables")]
-    public string startScene;
+    public class MainMenu : MonoBehaviour
+    {
+        [Header("Variables")]
+        public string startScene;
     
-    public void StartGame()
-    {
-        SceneManager.LoadScene(startScene);
-        DataPersistenceManager.instance.LoadGame();
-    }
+        public void StartGame()
+        {
+            SceneManager.LoadScene(startScene);
+            DataPersistenceManager.instance.LoadGame();
+        }
 
-    public void QuitGame()
-    {
-        Application.Quit();
-        Debug.Log("Quitting Game");
-        DataPersistenceManager.instance.SaveGame();
+        public void QuitGame()
+        {
+            Application.Quit();
+            Debug.Log("Quitting Game");
+            DataPersistenceManager.instance.SaveGame();
+        }
     }
 }

@@ -1,85 +1,91 @@
-using System;
-using System.Collections;
+using Player;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class LevelManagerForOceanside : MonoBehaviour
+namespace Level
 {
-    [Header("Components")] private Rigidbody2D rb;
-    private Rigidbody2D rbCam;
-
-    [Header("Objects")] public GameObject player;
-    public GameObject bgm, shootingSound;
-    public GameObject informationPage;
-    public GameObject screen;
-    public GameObject farBG, foreBG, sandBG;
-
-    [Header("Scripts")] public static LevelManagerForOceanside instance;
-
-    [Header("Variables")] private float counterForInfoPage = 10f;
-
-    public void Awake()
+    public class LevelManagerForOceanside : MonoBehaviour
     {
-        instance = this;
-        bgm.SetActive(false);
-        informationPage.SetActive(true);
+        [Header("Components")] private Rigidbody2D _rb;
+        private Rigidbody2D _rbCam;
 
-        rb = player.GetComponent<Rigidbody2D>();
-        rb.gravityScale = 0f;
+        [Header("Objects")] public GameObject player;
+        public GameObject bgm, shootingSound;
+        public GameObject informationPage;
+        public GameObject screen;
+        [FormerlySerializedAs("farBG")] public GameObject farBg;
+        [FormerlySerializedAs("foreBG")] public GameObject foreBg;
+        [FormerlySerializedAs("sandBG")] public GameObject sandBg;
 
-        rbCam = screen.GetComponent<Rigidbody2D>();
-        rbCam.gravityScale = 0f;
+        // ReSharper disable once InconsistentNaming
+        [Header("Scripts")] public static LevelManagerForOceanside instance;
 
-        shootingSound.SetActive(false);
-    }
+        [Header("Variables")] private float _counterForInfoPage = 10f;
 
-    private void Start()
-    {
-        PlayerController.instance.isUnderWater = true;
-    }
-
-    private void Update()
-    {
-        if (counterForInfoPage > 0f)
+        public void Awake()
         {
-            counterForInfoPage -= Time.deltaTime;
+            instance = this;
+            bgm.SetActive(false);
+            informationPage.SetActive(true);
+
+            _rb = player.GetComponent<Rigidbody2D>();
+            _rb.gravityScale = 0f;
+
+            _rbCam = screen.GetComponent<Rigidbody2D>();
+            _rbCam.gravityScale = 0f;
+
+            shootingSound.SetActive(false);
         }
 
-        if (counterForInfoPage <= 0f)
+        private void Start()
         {
-            bgm.SetActive(true);
-            shootingSound.SetActive(true);
-            informationPage.SetActive(false);
+            PlayerController.instance.isUnderWater = true;
         }
 
-        if (counterForInfoPage <= 0)
+        private void Update()
         {
-            rb.velocity = new Vector2(7f, 0f);
-
-            if (Time.timeScale == 1)
+            if (_counterForInfoPage > 0f)
             {
-                farBG.transform.position = new Vector3(farBG.transform.position.x - 0.035f, farBG.transform.position.y,
-                    farBG.transform.position.z);
-
-                foreBG.transform.position = new Vector3(foreBG.transform.position.x - 0.035f,
-                    foreBG.transform.position.y,
-                    foreBG.transform.position.z);
-
-                sandBG.transform.position = new Vector3(sandBG.transform.position.x - 0.05f,
-                    sandBG.transform.position.y,
-                    sandBG.transform.position.z);
+                _counterForInfoPage -= Time.deltaTime;
             }
 
-            rbCam.velocity = new Vector2(7f, 0f);
-            PlayerController.instance.spriteRenderer.flipX = false;
-
-            if (Input.GetKey(KeyCode.W))
+            if (_counterForInfoPage <= 0f)
             {
-                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + 15f);
+                bgm.SetActive(true);
+                shootingSound.SetActive(true);
+                informationPage.SetActive(false);
             }
 
-            if (Input.GetKey(KeyCode.S))
+            if (_counterForInfoPage <= 0)
             {
-                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y - 15f);
+                _rb.velocity = new Vector2(7f, 0f);
+
+                if (Time.timeScale == 1)
+                {
+                    farBg.transform.position = new Vector3(farBg.transform.position.x - 0.035f, farBg.transform.position.y,
+                        farBg.transform.position.z);
+
+                    foreBg.transform.position = new Vector3(foreBg.transform.position.x - 0.035f,
+                        foreBg.transform.position.y,
+                        foreBg.transform.position.z);
+
+                    sandBg.transform.position = new Vector3(sandBg.transform.position.x - 0.05f,
+                        sandBg.transform.position.y,
+                        sandBg.transform.position.z);
+                }
+
+                _rbCam.velocity = new Vector2(7f, 0f);
+                PlayerController.instance.spriteRenderer.flipX = false;
+
+                if (Input.GetKey(KeyCode.W))
+                {
+                    _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y + 15f);
+                }
+
+                if (Input.GetKey(KeyCode.S))
+                {
+                    _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y - 15f);
+                }
             }
         }
     }

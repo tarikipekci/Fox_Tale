@@ -1,21 +1,24 @@
 using UnityEngine;
 
-public class RoomManager : MonoBehaviour
+namespace Level
 {
-    public GameObject virtualCam;
+    public class RoomManager : MonoBehaviour
+    {
+        public GameObject virtualCam;
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.gameObject.CompareTag("Player") && !other.isTrigger)
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            virtualCam.SetActive(true);
+            if(other.gameObject.CompareTag("Player") && !other.isTrigger)
+            {
+                virtualCam.SetActive(true);
+            }
         }
-    }
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if(other.gameObject.CompareTag("Player") && !other.isTrigger)
+        private void OnTriggerExit2D(Collider2D other)
         {
-            virtualCam.SetActive(false);
+            if(other.gameObject.CompareTag("Player") && !other.isTrigger)
+            {
+                virtualCam.SetActive(false);
+            }
         }
     }
 }

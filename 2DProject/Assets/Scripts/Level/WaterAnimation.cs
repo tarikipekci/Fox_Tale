@@ -1,35 +1,36 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class WaterAnimation : MonoBehaviour
+namespace Level
 {
-    private int counter;
-    public GameObject[] water;
-    public Animator anim;
-
-    private void Start()
+    public class WaterAnimation : MonoBehaviour
     {
-        anim = GetComponent<Animator>();
-    }
+        private int _counter;
+        public GameObject[] water;
+        public Animator anim;
 
-    void Update()
-    {
-        StartCoroutine(CounterForAnimation());
-    }
-
-    IEnumerator CounterForAnimation()
-    {
-        water[counter].GetComponent<Animator>().SetBool($"Turn", true);
-        yield return new WaitForSeconds(2f);
-        water[counter].GetComponent<Animator>().SetBool($"Turn", false);
-        counter++;
-
-        if (counter == water.Length)
+        private void Start()
         {
-            counter = 0;
+            anim = GetComponent<Animator>();
         }
-        yield return new WaitForSeconds(2f);
+
+        void Update()
+        {
+            StartCoroutine(CounterForAnimation());
+        }
+
+        IEnumerator CounterForAnimation()
+        {
+            water[_counter].GetComponent<Animator>().SetBool($"Turn", true);
+            yield return new WaitForSeconds(2f);
+            water[_counter].GetComponent<Animator>().SetBool($"Turn", false);
+            _counter++;
+
+            if (_counter == water.Length)
+            {
+                _counter = 0;
+            }
+            yield return new WaitForSeconds(2f);
+        }
     }
 }
