@@ -1,6 +1,9 @@
 # Fox Tale
 This game is my first project that's why please keep in mind this before you judge 😊
 
+To directly play:
+https://voquel.itch.io/foxs-tale
+
 
 ![image](https://user-images.githubusercontent.com/100356709/210181431-7b9b9bf9-1c89-4192-970f-d2b901596d8c.png)
 
