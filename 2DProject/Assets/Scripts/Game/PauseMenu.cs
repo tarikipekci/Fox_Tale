@@ -16,7 +16,7 @@ namespace Game
 
         [Header("Game Objects")] public GameObject pauseScreen;
         public GameObject settingsScreen;
-        
+
         private void Awake()
         {
             instance = this;

@@ -1,4 +1,5 @@
 using System.Collections;
+using Enemy;
 using Player;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -32,7 +33,8 @@ namespace Level
             speechTen;
 
         private float _leftDistance, _rightDistance;
-
+        public int counter;
+        public int stompCounter;
         private int _jumpingCounter;
         private int _dashCounter;
         private float _waitForGemSpeech = 3f;
@@ -105,7 +107,7 @@ namespace Level
                 }
             }
 
-            if (EnemyController1.instance.counter > 0)
+            if (counter > 0)
             {
                 if (speechSeven == 0)
                 {
@@ -116,7 +118,7 @@ namespace Level
                 }
             }
 
-            if (EnemyController1.instance.stompCounter > 0)
+            if (stompCounter > 0)
             {
                 if (speechSix == 0)
                 {

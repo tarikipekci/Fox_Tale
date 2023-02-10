@@ -28,7 +28,6 @@ namespace Game
             {
                 audioManager.soundEffects[i].volume = data.ambientSoundLevel;
             }
-            
         }
 
         public int[] width = { 800, 1024, 1280, 1360, 1366, 1920 };

@@ -2057,8 +2057,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoints: 0
   maxHitPoints: 5
-  stompCounter: 0
-  counter: 0
   sp: {fileID: 6665847}
   deathEffect: {fileID: 7401172759280818589, guid: 578ba5e384477f8478060fdf34eb551c, type: 3}
   stompBox: {fileID: 192564123}
@@ -2081,8 +2079,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoints: 0
   maxHitPoints: 10000000
-  stompCounter: 0
-  counter: 0
   sp: {fileID: 1167644161}
   deathEffect: {fileID: 7401172759280818589, guid: 578ba5e384477f8478060fdf34eb551c, type: 3}
   stompBox: {fileID: 192564123}
@@ -2478,6 +2474,8 @@ MonoBehaviour:
   speechEight: 0
   speechNine: 0
   speechTen: 0
+  counter: 0
+  stompCounter: 0
 --- !u!4 &920531426
 Transform:
   m_ObjectHideFlags: 0
