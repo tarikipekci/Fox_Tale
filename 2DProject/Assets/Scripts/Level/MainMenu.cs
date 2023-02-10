@@ -10,8 +10,7 @@ namespace Level
 
         [Header("Objects")] public GameObject mainMenu;
         public AudioManager audioManager;
-        public SettingsData data;
-
+        
         public void StartGame()
         {
             SceneManager.LoadScene(startScene);
@@ -27,12 +26,12 @@ namespace Level
 
         private void Awake()
         {
-            audioManager.bgm.volume = data.soundLevelForMusic;
+            audioManager.bgm.volume = audioManager.data.soundLevelForMusic;
             
             // ReSharper disable once ForCanBeConvertedToForeach
             for (var i = 0; i < audioManager.soundEffects.Length; i++)
             {
-                audioManager.soundEffects[i].volume = data.ambientSoundLevel;
+                audioManager.soundEffects[i].volume = audioManager.data.ambientSoundLevel;
             }
         }
     }

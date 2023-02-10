@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4ff86c97b3a0a9469fabb74bfe3debc, type: 3}
   m_Name: New Settings
   m_EditorClassIdentifier: 
-  MusicLevel: 0
-  SoundLevel: 0
+  soundLevelForMusic: 5
+  ambientSoundLevel: 5
+  generalSound: 5
