@@ -123,21 +123,21 @@ namespace Player
                             //Detecting direction of the player
                             if (spriteRenderer.flipX)
                             {
-                                _dashingDir = -new Vector2(inputX, Input.GetAxisRaw("Vertical"));
+                                _dashingDir = -new Vector2(inputX, 0f);
                             }
 
                             else if (!spriteRenderer.flipX)
                             {
-                                _dashingDir = new Vector2(inputX, Input.GetAxisRaw("Vertical"));
+                                _dashingDir = new Vector2(inputX, 0f);
                             }
 
                             if (_dashingDir == Vector2.zero && spriteRenderer.flipX)
                             {
-                                _dashingDir = new Vector2(transform.localScale.x, 0);
+                                _dashingDir = new Vector2(transform.localScale.x, 0f);
                             }
                             else if (_dashingDir == Vector2.zero && !spriteRenderer.flipX)
                             {
-                                _dashingDir = new Vector2(transform.localScale.x, 0);
+                                _dashingDir = new Vector2(transform.localScale.x, 0f);
                             }
 
                             StartCoroutine(StopDashing(originalGravityScale));

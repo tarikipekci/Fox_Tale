@@ -110726,6 +110726,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4120428409857373937, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
+      propertyPath: mText
+      value: 
+      objectReference: {fileID: 2940586233644618299}
+    - target: {fileID: 4120428409857373937, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
+      propertyPath: fpsDisplay
+      value: 
+      objectReference: {fileID: 2940586233644618299}
     - target: {fileID: 4223168346621867280, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -110919,6 +110927,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1611585299, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
   m_PrefabInstance: {fileID: 2940586233644618296}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2940586233644618299 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3942013846102865892, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
+  m_PrefabInstance: {fileID: 2940586233644618296}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4328325204560115173
 PrefabInstance:
   m_ObjectHideFlags: 0

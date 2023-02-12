@@ -9919,6 +9919,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3942013846102865892, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3974304509412713227, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -9943,6 +9947,18 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4373543012970217668, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 86.1794
+      objectReference: {fileID: 0}
+    - target: {fileID: 4373543012970217668, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 907.9603
+      objectReference: {fileID: 0}
+    - target: {fileID: 4373543012970217668, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 453
+      objectReference: {fileID: 0}
     - target: {fileID: 4677727472448630997, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -9954,6 +9970,22 @@ PrefabInstance:
     - target: {fileID: 4677727472448630997, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5331163538757740106, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5331163538757740106, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 99.8676
+      objectReference: {fileID: 0}
+    - target: {fileID: 5331163538757740106, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 901.1162
+      objectReference: {fileID: 0}
+    - target: {fileID: 5331163538757740106, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 6027113839544096358, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
       propertyPath: m_Color.b
@@ -10047,8 +10079,20 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4120428409857373937, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
+--- !u!114 &1030530398 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3942013846102865892, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
+  m_PrefabInstance: {fileID: 1030530397}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1033692100
 GameObject:
   m_ObjectHideFlags: 0
@@ -11181,9 +11225,31 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2940586233360472712, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
   m_PrefabInstance: {fileID: 1030530397}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2047027854}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: beede8d56aa1cb143bfbffca4663526a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2047027854 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2940586233360472722, guid: 79819a70b2c88b44e93faa660dc17047, type: 3}
+  m_PrefabInstance: {fileID: 1030530397}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2047027859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047027854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4486b814b9dfa664492b6b666483b848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 0
+  refresh: 0
+  avgFramerate: 0
+  display: '{0} FPS'
+  fpsDisplay: {fileID: 1030530398}

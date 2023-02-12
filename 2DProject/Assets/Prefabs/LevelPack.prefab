@@ -122,7 +122,6 @@ MonoBehaviour:
   isGem: 0
   isHealth: 0
   followSpeed: 0
-  id: 
   pickupEffect: {fileID: 81106413372517365, guid: 590bb813781332e41ad807ec7151b472, type: 3}
 --- !u!58 &954855522
 CircleCollider2D:
@@ -363,7 +362,6 @@ MonoBehaviour:
   isGem: 0
   isHealth: 0
   followSpeed: 0
-  id: 
   pickupEffect: {fileID: 81106413372517365, guid: 590bb813781332e41ad807ec7151b472, type: 3}
 --- !u!58 &2077905051
 CircleCollider2D:
@@ -794,6 +792,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelToLoad: Testing2
   nextLevel: Level2
+  data: {fileID: 0}
 --- !u!1 &255126534638399659
 GameObject:
   m_ObjectHideFlags: 0
@@ -1622,7 +1621,7 @@ MonoBehaviour:
   ambientLevel: {fileID: 7979579279494246626}
   musicLevel: {fileID: 9183314244609325296}
   audioManager: {fileID: 2940586232102137327}
-  defaultIndex: 5
+  data: {fileID: 0}
   width: 200300000004000000050000500500005605000080070000
   height: 5802000000030000d0020000000300000003000038040000
 --- !u!1 &2165004506400252172
@@ -1658,7 +1657,7 @@ RectTransform:
   m_Children:
   - {fileID: 3810311782666008298}
   m_Father: {fileID: 2940586232111322715}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4422,6 +4421,10 @@ PrefabInstance:
     - target: {fileID: 1428695105232970731, guid: efffe8d3d45f3434ca8b1740fcf831f3, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3972292940224488093, guid: efffe8d3d45f3434ca8b1740fcf831f3, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6202437472939977888, guid: efffe8d3d45f3434ca8b1740fcf831f3, type: 3}
       propertyPath: m_IsActive
