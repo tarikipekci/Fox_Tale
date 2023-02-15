@@ -23,20 +23,23 @@ namespace Game
             pauseScreen.SetActive(false);
         }
 
-        void Update()
+        private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                PauseOrUnpause();
-            }
-
-            if (settings)
+            if (LevelManagerForOceanside.instance.counterForInfoPage < 0)
             {
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     PauseOrUnpause();
-                    settings = false;
-                    settingsScreen.SetActive(false);
+                }
+
+                if (settings)
+                {
+                    if (Input.GetKeyDown(KeyCode.Escape))
+                    {
+                        PauseOrUnpause();
+                        settings = false;
+                        settingsScreen.SetActive(false);
+                    }
                 }
             }
         }

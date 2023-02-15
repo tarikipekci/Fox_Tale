@@ -73,3 +73,6 @@ TagManager:
   - name: Player
     uniqueID: 3417025033
     locked: 0
+  - name: WarningSign
+    uniqueID: 1178983933
+    locked: 0

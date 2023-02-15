@@ -18,11 +18,12 @@ namespace Level
         public static int GemCounter;
 
         [Header("Objects")] public SettingsData data;
-        
+
         private void Awake()
         {
             _instance = this;
         }
+
         private void Update()
         {
             UIController.instance.UpdateGemCount();
@@ -34,22 +35,30 @@ namespace Level
 
         private IEnumerator RespawnCoolDown()
         {
-            var color = PlayerController.instance.spriteRenderer.color;
-            color = new Color(color.r,
-                color.g, color.b, 1f);
-            PlayerController.instance.spriteRenderer.color = color;
-            UIController.instance.FadeToBlack();
-            yield return new WaitForSeconds(1f / UIController.instance.fadeSpeed + 0.2f);
-            UIController.instance.FadeFromBlack();
-            PlayerController.instance.gameObject.SetActive(true);
-            MuzzleFlash.instance.isShooting = false;
-            PlayerController.instance.canDash = false;
-            PlayerController.instance.isDashing = false;
-            PlayerController.instance.transform.position = CheckPointController.instance.spawnPoint;
-            PlayerHealthController.instance.currentHealth = PlayerHealthController.instance.maxHealth;
-            UIController.instance.UpdateHealth();
-            
-            yield return new WaitForSeconds(1f);
+            if (PlayerController.instance.isUnderWater != true)
+            {
+                var color = PlayerController.instance.spriteRenderer.color;
+                color = new Color(color.r,
+                    color.g, color.b, 1f);
+                PlayerController.instance.spriteRenderer.color = color;
+                UIController.instance.FadeToBlack();
+                yield return new WaitForSeconds(1f / UIController.instance.fadeSpeed + 0.2f);
+                UIController.instance.FadeFromBlack();
+                PlayerController.instance.gameObject.SetActive(true);
+                MuzzleFlash.instance.isShooting = false;
+                PlayerController.instance.canDash = false;
+                PlayerController.instance.isDashing = false;
+                PlayerController.instance.transform.position = CheckPointController.instance.spawnPoint;
+                PlayerHealthController.instance.currentHealth = PlayerHealthController.instance.maxHealth;
+                UIController.instance.UpdateHealth();
+
+                yield return new WaitForSeconds(1f);
+            }
+            else
+            {
+                SceneManager.LoadScene(levelToLoad);
+                LevelManagerForOceanside.instance.informationPage.SetActive(false);
+            }
         }
 
         public void EndLevel()
@@ -62,7 +71,7 @@ namespace Level
             if (_musicPlayed) yield break;
             _musicPlayed = true;
             GemCounter = GemsCollected;
-            
+
             AudioManager.instance.bgm.Stop();
             AudioManager.instance.levelEndMusic.Play();
             CameraController.instance.stopFollow = true;
@@ -71,9 +80,9 @@ namespace Level
             UIController.instance.FadeToBlack();
             yield return new WaitForSeconds(1f / UIController.instance.fadeSpeed + .25f);
             SceneManager.LoadScene(nextLevel);
-            
+
             SettingsController.instance.audioManager.bgm.volume = data.soundLevelForMusic;
-            
+
             // ReSharper disable once ForCanBeConvertedToForeach
             for (var i = 0; i < SettingsController.instance.audioManager.soundEffects.Length; i++)
             {
