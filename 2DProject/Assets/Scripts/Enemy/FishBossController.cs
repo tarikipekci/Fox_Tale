@@ -53,7 +53,7 @@ namespace Enemy
                 if (chanceToSpawn > 70f)
                 {
                     var newFish = Instantiate(dartFish, dartFishSpawnerPoint.position, dartFishSpawnerPoint.rotation);
-                    Destroy(newFish, 0.7f);
+                    Destroy(newFish, 0.9f);
                     Instantiate(UnderWaterTraps.instance.deathEffect, newFish.gameObject.transform.position,
                         newFish.gameObject.transform.rotation);
                 }
@@ -64,7 +64,7 @@ namespace Enemy
                         {
                             var newFish = Instantiate(redFish, redFishSpawnerPoint1.position,
                                 redFishSpawnerPoint1.rotation);
-                            Destroy(newFish, 2.3f);
+                            Destroy(newFish, 2.7f);
                             Instantiate(UnderWaterTraps.instance.deathEffect, newFish.gameObject.transform.position,
                                 newFish.gameObject.transform.rotation);
                             break;
@@ -73,7 +73,7 @@ namespace Enemy
                         {
                             var newFish = Instantiate(redFish, redFishSpawnerPoint2.position,
                                 redFishSpawnerPoint2.rotation);
-                            Destroy(newFish, 2.3f);
+                            Destroy(newFish, 2.7f);
                             Instantiate(UnderWaterTraps.instance.deathEffect, newFish.gameObject.transform.position,
                                 newFish.gameObject.transform.rotation);
                             break;
