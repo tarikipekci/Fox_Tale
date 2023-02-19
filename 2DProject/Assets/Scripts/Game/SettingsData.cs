@@ -10,7 +10,14 @@ namespace Game
         public float ambientSoundLevel;
         public float generalSound;
 
+        [Header("Level 3 Settings")] public bool introPageViewed;
+
         // ReSharper disable once InconsistentNaming
         [Header("Scripts")] public static SettingsData instance;
+
+        private void Awake()
+        {
+            introPageViewed = false;
+        }
     }
 }

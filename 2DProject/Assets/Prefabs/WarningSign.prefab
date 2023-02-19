@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c1872bcc4228974481cc89c0556f2c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 1.5
+  lifeTime: 0.5
 --- !u!212 &7861147486147328101
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -85,8 +85,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -877942263
-  m_SortingLayer: 4
+  m_SortingLayerID: 1178983933
+  m_SortingLayer: 5
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: adb118d19e3abc04eba98f115a443ad5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 09aaabcbfddd4546
+  m_ApplyToSortingLayers: fddd4546
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -142,8 +142,8 @@ MonoBehaviour:
     m_Extent: {x: 0, y: 0, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 10
-  m_PointLightOuterRadius: 10
+  m_PointLightInnerRadius: 2
+  m_PointLightOuterRadius: 2
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1

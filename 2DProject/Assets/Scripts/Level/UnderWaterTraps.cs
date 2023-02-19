@@ -6,23 +6,24 @@ namespace Level
     public class UnderWaterTraps : MonoBehaviour
     {
         [Header("Objects")] public GameObject deathEffect;
-        public GameObject bullet;
+
+        // ReSharper disable once InconsistentNaming
+        [Header("Script")] public static UnderWaterTraps instance;
+
+        private void Awake()
+        {
+            instance = this;
+        }
+
         private void OnTriggerEnter2D(Collider2D other)
         {
             Destroy(gameObject);
             Instantiate(deathEffect, gameObject.transform.position, gameObject.transform.rotation);
 
-            if (gameObject.CompareTag("OceanTrap"))
+            if (!gameObject.CompareTag("OceanTrap")) return;
+            if (other.gameObject.CompareTag("Player"))
             {
-                if (other.gameObject.CompareTag("Player"))
-                {
-                    PlayerHealthController.instance.DealDamage(PlayerController.instance.damage);
-                }
-
-                if (other.gameObject.CompareTag("Bullet"))
-                {
-                    Destroy(other.gameObject);
-                }
+                PlayerHealthController.instance.DealDamage(1);
             }
         }
     }

@@ -18,6 +18,7 @@ TagManager:
   - Boss
   - LightTrigger
   - OceanTrap
+  - DartFish
   layers:
   - Default
   - TransparentFX

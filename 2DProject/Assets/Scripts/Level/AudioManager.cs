@@ -9,6 +9,7 @@ namespace Level
         [Header("Scripts")]
         // ReSharper disable once InconsistentNaming
         public static AudioManager instance;
+
         public SettingsData data;
 
         [Header("Components")] public AudioSource[] soundEffects;
@@ -18,13 +19,14 @@ namespace Level
         {
             instance = this;
             bgm.volume = data.soundLevelForMusic;
+            levelEndMusic.volume = data.soundLevelForMusic;
             
-            for (var i = 0; i < soundEffects.Length; i++)
+            foreach (var t in soundEffects)
             {
-                soundEffects[i].volume = data.ambientSoundLevel;
+                t.volume = data.ambientSoundLevel;
             }
-            
         }
+
         public void PlaySfx(int soundToPlay)
         {
             soundEffects[soundToPlay].Stop();

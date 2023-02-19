@@ -25,7 +25,27 @@ namespace Game
 
         private void Update()
         {
-            if (LevelManagerForOceanside.instance.counterForInfoPage < 0)
+            if (PlayerController.instance.isUnderWater)
+            {
+                if (LevelManagerForOceanside.instance.counterForInfoPage < 0)
+                {
+                    if (Input.GetKeyDown(KeyCode.Escape))
+                    {
+                        PauseOrUnpause();
+                    }
+
+                    if (settings)
+                    {
+                        if (Input.GetKeyDown(KeyCode.Escape))
+                        {
+                            PauseOrUnpause();
+                            settings = false;
+                            settingsScreen.SetActive(false);
+                        }
+                    }
+                }
+            }
+            else
             {
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {

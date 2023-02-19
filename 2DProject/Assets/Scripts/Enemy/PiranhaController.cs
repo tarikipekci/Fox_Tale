@@ -1,3 +1,4 @@
+using Level;
 using UnityEngine;
 
 namespace Enemy
@@ -34,6 +35,7 @@ namespace Enemy
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            if (OceanPartBossController.instance.enteredBossArea) return;
             if (other.gameObject.CompareTag("Bullet"))
             {
                 Instantiate(gem, gameObject.transform.position, gameObject.transform.rotation);

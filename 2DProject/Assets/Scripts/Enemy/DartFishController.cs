@@ -1,4 +1,4 @@
-using System;
+using Level;
 using UnityEngine;
 
 namespace Enemy
@@ -23,27 +23,24 @@ namespace Enemy
         {
             var distance = Vector2.Distance(player.position, transform.position);
 
-            if (Time.timeScale == 1)
+            if (Time.timeScale != 1) return;
+            if (!(distance < 50f)) return;
+            if (_isWarned == false)
             {
-                if (distance < 50f)
-                {
-                    if (_isWarned == false)
-                    {
-                        _target = new Vector3(player.position.x, player.position.y, player.position.z);
-                        var direction = -_target + transform.position;
-                        var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                        _rigidbody.rotation = angle;
-                        Instantiate(warningSign, player.transform.position, player.transform.rotation);
-                        _isWarned = true;
-                    }
-
-                    transform.position = Vector2.MoveTowards(transform.position, _target, swimmingSpeed);
-                }
+                _target = new Vector3(player.position.x, player.position.y, player.position.z);
+                var direction = -_target + transform.position;
+                var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                _rigidbody.rotation = angle;
+                Instantiate(warningSign, player.transform.position, player.transform.rotation);
+                _isWarned = true;
             }
+
+            transform.position = Vector2.MoveTowards(transform.position, _target, swimmingSpeed);
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            if (OceanPartBossController.instance.enteredBossArea) return;
             if (other.gameObject.CompareTag("Bullet"))
             {
                 Instantiate(gem, gameObject.transform.position, gameObject.transform.rotation);

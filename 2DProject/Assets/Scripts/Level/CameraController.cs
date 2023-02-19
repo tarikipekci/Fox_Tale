@@ -31,6 +31,7 @@ namespace Level
             if (stopFollow) return;
             var transform2 = transform;
             var position2 = transform2.position;
+            // ReSharper disable once InlineTemporaryVariable
             var position1 = position2;
             var amountToMoveX = position1.x - _lastXPos;
             var amountToMoveY = position1.y - _lastYPos;

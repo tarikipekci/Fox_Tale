@@ -22,6 +22,7 @@ namespace Game
             data.generalSound = (data.ambientSoundLevel + data.soundLevelForMusic) / 2f;
 
             audioManager.bgm.volume = data.soundLevelForMusic;
+            audioManager.levelEndMusic.volume = data.soundLevelForMusic;
             
             // ReSharper disable once ForCanBeConvertedToForeach
             for (var i = 0; i < audioManager.soundEffects.Length; i++)
@@ -105,11 +106,13 @@ namespace Game
         public void IncreaseMusicSound()
         {
             audioManager.bgm.volume += 0.01f;
+            audioManager.levelEndMusic.volume += 0.01f;
         }
 
         public void DecreaseMusicSound()
         {
             audioManager.bgm.volume -= 0.01f;
+            audioManager.levelEndMusic.volume -= 0.01f;
         }
     }
 }

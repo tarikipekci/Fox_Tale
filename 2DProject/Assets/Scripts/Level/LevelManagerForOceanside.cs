@@ -1,3 +1,4 @@
+using Game;
 using Player;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,18 +18,30 @@ namespace Level
         public GameObject foreBg;
         public GameObject sandBg;
         public Text counter;
+        public SettingsData data;
 
         // ReSharper disable once InconsistentNaming
         [Header("Scripts")] public static LevelManagerForOceanside instance;
 
-        [Header("Variables")] public float counterForInfoPage = 10f;
-
+        [Header("Variables")] public float counterForInfoPage;
+        
         public void Awake()
         {
             instance = this;
             bgm.SetActive(false);
-            informationPage.SetActive(true);
 
+            if (data.introPageViewed == false)
+            {
+                informationPage.SetActive(true);
+                counterForInfoPage = 10f;
+                data.introPageViewed = true;
+            }
+            else
+            {
+                counterForInfoPage = -5;
+                informationPage.SetActive(false);
+            }
+            
             _rb = player.GetComponent<Rigidbody2D>();
             _rb.gravityScale = 0f;
 
@@ -45,6 +58,7 @@ namespace Level
 
         private void Update()
         {
+            // ReSharper disable once SpecifyACultureInStringConversionExplicitly
             counter.text = Mathf.Round(counterForInfoPage).ToString();
 
             if (counterForInfoPage > 0f)
@@ -63,13 +77,29 @@ namespace Level
             {
                 if (OceanSidePart2Controller.instance.part2 == false)
                 {
-                    _rb.velocity = new Vector2(7f, 0f);
-                    _rbCam.velocity = new Vector2(7f, 0f);
+                    if (OceanPartBossController.instance.enteredBossArea == false)
+                    {
+                        _rb.velocity = new Vector2(7f, 0f);
+                        _rbCam.velocity = new Vector2(7f, 0f);
+                    }
+                    else
+                    {
+                        _rb.velocity = new Vector2(0f, 0f);
+                        _rbCam.velocity = new Vector2(0f, 0f);
+                    }
                 }
                 else
                 {
-                    _rb.velocity = new Vector2(12f, 0f);
-                    _rbCam.velocity = new Vector2(12f, 0f);
+                    if (OceanPartBossController.instance.enteredBossArea == false)
+                    {
+                        _rb.velocity = new Vector2(12f, 0f);
+                        _rbCam.velocity = new Vector2(12f, 0f);
+                    }
+                    else
+                    {
+                        _rb.velocity = new Vector2(0f, 0f);
+                        _rbCam.velocity = new Vector2(0f, 0f);
+                    }
                 }
 
                 if (Time.timeScale == 1)
@@ -86,7 +116,7 @@ namespace Level
                         sandBg.transform.position.y,
                         sandBg.transform.position.z);
                 }
-                
+
                 PlayerController.instance.spriteRenderer.flipX = false;
 
                 if (Input.GetKey(KeyCode.W))
