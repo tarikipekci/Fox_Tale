@@ -3,6 +3,7 @@ This game is my first project that's why please keep in mind this before you jud
 
 To directly play:
 https://voquel.itch.io/foxs-tale
+
 Documentation:[YilmazTarıkİpekci-2010205060-SoftwareEngineeringAssignment.pdf](https://github.com/tarikipekci/Fox_Tale/files/11665815/YilmazTarikIpekci-2010205060-SoftwareEngineeringAssignment.pdf)
 
 
